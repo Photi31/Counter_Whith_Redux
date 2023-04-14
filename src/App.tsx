@@ -30,14 +30,13 @@ function App() {
         dispatch(setNewValuesAC())
         setCounterScreen(!counterScreen)
     }
-    const changeValue = (value: number, id: string) => {
+    const changeSettingValue = (value: number, id: string) => {
         if (id === 'minValue') {
             dispatch(setMinValueAC(value))
         } else if (id === 'maxValue') {
             dispatch(setMaxValueAC(value))
         }
     }
-
     const incValue = () => {
         dispatch(incrementAC())
     }
@@ -59,7 +58,7 @@ function App() {
                 : <SetScreen minValue={state.setMinValue}
                              maxValue={state.setMaxValue}
                              set={set}
-                             changeValue={changeValue}/>}
+                             changeSettingValue={changeSettingValue}/>}
         </div>
     );
 }

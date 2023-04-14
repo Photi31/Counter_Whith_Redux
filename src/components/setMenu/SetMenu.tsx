@@ -4,7 +4,7 @@ import s from './SetMenu.module.css'
 type SetMenuType = {
     minValue: number
     maxValue: number
-    changeValue: (value: number, id: string) => void
+    changeSettingValue: (value: number, id: string) => void
 }
 
 export const SetMenu = (props: SetMenuType) => {
@@ -34,7 +34,7 @@ export const SetMenu = (props: SetMenuType) => {
 
     const OnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.currentTarget.name)
-        props.changeValue(+e.currentTarget.value, e.currentTarget.id)
+        props.changeSettingValue(+e.currentTarget.value, e.currentTarget.id)
     }
 
     return <div className={s.set}>

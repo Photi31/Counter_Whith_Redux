@@ -7,28 +7,27 @@ type SetScreenType = {
     minValue: number
     maxValue: number
     set: () => void
-    changeValue: (value: number, id: string) => void
+    changeSettingValue: (value: number, id: string) => void
 }
 
 export const SetScreen = (props: SetScreenType) => {
     const buttons = [
         {id: v1(), name: 'SET', condition: 'active'}
     ]
-    let buttonsForButton = [...buttons]
 
     if (props.minValue < 0
         || props.maxValue < 1
         || props.maxValue < props.minValue
         || props.maxValue === props.minValue) {
-        buttonsForButton[0].condition = 'disable'
+        buttons[0].condition = 'disable'
     }
 
     return <>
         <SetMenu minValue={props.minValue}
                  maxValue={props.maxValue}
-                 changeValue={props.changeValue}
+                 changeSettingValue={props.changeSettingValue}
         />
-        <Buttons buttons={buttonsForButton}
+        <Buttons buttons={buttons}
                  set={props.set}
         />
     </>

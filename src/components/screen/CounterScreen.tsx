@@ -20,25 +20,22 @@ export const CounterScreen = (props: CounterScreenType) => {
         {id: v1(), name: 'SET', condition: 'active'}
     ]
 
-    let buttonsForButton = [...buttons]
-
     if (props.currentValue === props.startValue) {
-        buttonsForButton[1].condition = 'disable'
+        buttons[1].condition = 'disable'
     } else {
-        buttonsForButton[1].condition = 'active'
+        buttons[1].condition = 'active'
     }
 
     if (props.currentValue === props.finishValue) {
-        buttonsForButton[0].condition = 'disable'
+        buttons[0].condition = 'disable'
     } else {
-        buttonsForButton[0].condition = 'active'
+        buttons[0].condition = 'active'
     }
-
 
     return <>
         <Counter currentValue={props.currentValue}
                  finishValue={props.finishValue}/>
-        <Buttons buttons={buttonsForButton}
+        <Buttons buttons={buttons}
                  incValue={props.incValue}
                  resetValue={props.resetValue}
                  set={props.set}/>
