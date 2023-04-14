@@ -4,7 +4,10 @@ import React from "react";
 import {SetMenu} from "../setMenu/SetMenu";
 
 type SetScreenType = {
+    minValue: number
+    maxValue: number
     set: () => void
+    changeValue: (value: number, id: string) => void
 }
 
 export const SetScreen = (props: SetScreenType) => {
@@ -13,11 +16,20 @@ export const SetScreen = (props: SetScreenType) => {
     ]
     let buttonsForButton = [...buttons]
 
-    const setCount = () => props.set()
+    if (props.minValue < 0
+        || props.maxValue < 1
+        || props.maxValue < props.minValue
+        || props.maxValue === props.minValue) {
+        buttonsForButton[0].condition = 'disable'
+    }
 
     return <>
-        <SetMenu/>
+        <SetMenu minValue={props.minValue}
+                 maxValue={props.maxValue}
+                 changeValue={props.changeValue}
+        />
         <Buttons buttons={buttonsForButton}
-                 set={setCount}/>
+                 set={props.set}
+        />
     </>
 }

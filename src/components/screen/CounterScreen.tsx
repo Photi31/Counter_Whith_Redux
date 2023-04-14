@@ -1,15 +1,19 @@
 import {Counter} from "../counter/Counter";
 import {Buttons} from "../buttons/Buttons";
-import React, {useState} from "react";
+import React from "react";
 import {v1} from "uuid";
 
 
 type CounterScreenType = {
+    currentValue: number
+    startValue: number
+    finishValue: number
+    incValue: () => void
+    resetValue: () => void
     set: () => void
 }
 
 export const CounterScreen = (props: CounterScreenType) => {
-    let [counter, setCounter] = useState<number>(0)
     const buttons = [
         {id: v1(), name: 'INC', condition: 'active'},
         {id: v1(), name: 'RESET', condition: 'active'},
@@ -18,35 +22,25 @@ export const CounterScreen = (props: CounterScreenType) => {
 
     let buttonsForButton = [...buttons]
 
-    if (counter === 0) {
+    if (props.currentValue === props.startValue) {
         buttonsForButton[1].condition = 'disable'
     } else {
         buttonsForButton[1].condition = 'active'
     }
 
-    if (counter === 5) {
+    if (props.currentValue === props.finishValue) {
         buttonsForButton[0].condition = 'disable'
     } else {
         buttonsForButton[0].condition = 'active'
     }
 
-    const incrementCounter = () => {
-        if (counter < 5) {
-            setCounter(++counter)
-        }
-    }
-
-    const resetCounter = () => {
-        setCounter(0)
-    }
-
-    const setCount = () => props.set()
 
     return <>
-        <Counter counter={counter}/>
+        <Counter currentValue={props.currentValue}
+                 finishValue={props.finishValue}/>
         <Buttons buttons={buttonsForButton}
-                 incrementCounter={incrementCounter}
-                 resetCounter={resetCounter}
-                 set={setCount}/>
+                 incValue={props.incValue}
+                 resetValue={props.resetValue}
+                 set={props.set}/>
     </>
 }
