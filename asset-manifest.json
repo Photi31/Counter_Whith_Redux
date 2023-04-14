@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Counter_Whith_Redux/static/css/main.6a237fba.css",
+    "main.js": "/Counter_Whith_Redux/static/js/main.cb3f6043.js",
+    "index.html": "/Counter_Whith_Redux/index.html",
+    "main.6a237fba.css.map": "/Counter_Whith_Redux/static/css/main.6a237fba.css.map",
+    "main.cb3f6043.js.map": "/Counter_Whith_Redux/static/js/main.cb3f6043.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a237fba.css",
+    "static/js/main.cb3f6043.js"
+  ]
+}
